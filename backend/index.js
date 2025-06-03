@@ -1,11 +1,11 @@
 import express from"express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-const app = express();
+
 import dotenv from "dotenv";
 import connectDB from "./utils/db.js";
-dotenv.config ({});
-
+dotenv.config ();
+const app = express();
 
     //middleware
 
