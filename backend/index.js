@@ -3,7 +3,8 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 const app = express();
 import dotenv from "dotenv";
-dotenv.config ();
+import connectDB from "./utils/db.js";
+dotenv.config ({});
 
 
     //middleware
@@ -22,5 +23,6 @@ dotenv.config ();
 const PORT = process.env.PORT ||  5001;
 const MONGO_URI =" mongodb+srv://aryan61865:V5RsXbrICLcam116@cluster0.zdvoghe.mongodb.net/";
 app.listen(PORT,() =>{
+    connectDB();
     console.log(`server is runnig o port ${PORT}`);
 });
