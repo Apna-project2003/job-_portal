@@ -95,8 +95,9 @@ export const login = async (req, res) => {
         return res.status(200).cookie("token", token, { maxAge: 1 * 24 * 60 * 60 * 1000, httpsOnly: true, sameSite: 'strict' }).json({
             message: `Welcome back ${user.fullname}`,
             user,
+            token,
             success: true
-        })
+        });
     } catch (error) {
         console.log(error);
     }
@@ -162,3 +163,7 @@ export const updateProfile = async (req, res) => {
         console.log(error);
     }
 }
+
+
+
+
