@@ -1,40 +1,3 @@
-// import express from"express";
-// import cookieParser from "cookie-parser";
-// import cors from "cors";
-
-// import dotenv from "dotenv";
-// import connectDB from "./utils/db.js";
-// import UserRoute from "./routes/user.route.js";
-// dotenv.config ();
-
-// const app = express();
-
-//     //middleware
-
-//     app.use(express.json());
-//     app.use(express.urlencoded({ extended : true}));
-//     app.use(cookieParser());
-
-//     const corsOptions = {
-//         origin : ["http://localhost:5121"],
-//         credentials : true,
-//     };
-
-//     app.use(cors(corsOptions));
-
-// const PORT = process.env.PORT ||  5001;
-
-// //api's
-
-// app.use("/api/users" , UserRoute);
-// const MONGO_URI =" mongodb+srv://aryan61865:ZccnMPPYg8mXXYFa@cluster0.r2gbu4q.mongodb.net/ ";
-// app.listen(PORT,() =>{
-//     connectDB();
-//     console.log(`server is runnig o port ${PORT}`);
-// });
-
-
-
 
 
 import express from "express";
@@ -44,7 +7,7 @@ import dotenv from "dotenv";
 dotenv.config();
 import mongoose from "mongoose";
 
-
+import companyRoute from "./routes/company.route.js";
 
 import connectDB from "./utils/db.js";
 import UserRoute from "./routes/user.route.js";
@@ -67,7 +30,7 @@ const PORT = process.env.PORT || 5001;
 
 // APIs
 app.use("/api/users", UserRoute);
-
+app.use("/api/company",companyRoute);
 
 const MONGO_URI =  "mongodb+srv://aryan61865:ZccnMPPYg8mXXYFa@cluster0.r2gbu4q.mongodb.net/"
 app.listen(PORT, async () => {

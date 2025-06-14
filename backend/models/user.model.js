@@ -27,13 +27,14 @@ const userSchema = new mongoose.Schema({
         unique: true
     },
     phoneNumber: {
-        type: Number,
+        type: String,
         required: true,
+        unique : true
         
     },
     password:{
         type:String,
-        required:true,
+        required:true
     },
     role:{
         type:String,
@@ -45,11 +46,14 @@ const userSchema = new mongoose.Schema({
         skills:[{type:String}],
         resume:{type:String}, // URL to resume file
         resumeOriginalName:{type:String},
-        company:{type:mongoose.Schema.Types.ObjectId, ref:'Company'}, 
+        company:{type:mongoose.Schema.Types.ObjectId, 
+            ref:"Company",
+
+        }, 
         profilePhoto:{
             type:String,
-            default:""
-        }
+            default:"",
+        },
     },
 },{timestamps:true});
-export const User = mongoose.model('User', userSchema);
+export const User = mongoose.model("User", userSchema);
