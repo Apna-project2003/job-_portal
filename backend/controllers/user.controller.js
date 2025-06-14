@@ -186,11 +186,15 @@ export const updateProfile = async (req, res) => {
             success:false,
         });
     }
+<<<<<<< HEAD
 };
 
 
 
 
+=======
+}
+>>>>>>> 090a397e5567680183747e7371e50b54515352f7
 
 
 
