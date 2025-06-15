@@ -11,7 +11,8 @@ import companyRoute from "./routes/company.route.js";
 
 import connectDB from "./utils/db.js";
 import UserRoute from "./routes/user.route.js";
-
+import jobRoute from "./routes/job.route.js";
+import applicationRoute from "./routes/application.route.js";
 const app = express();
 
 // middleware
@@ -31,7 +32,8 @@ const PORT = process.env.PORT || 5001;
 // APIs
 app.use("/api/users", UserRoute);
 app.use("/api/company",companyRoute);
-
+app.use("/api/job",jobRoute);
+app.use("/api/application",applicationRoute)
 const MONGO_URI =  "mongodb+srv://aryan61865:ZccnMPPYg8mXXYFa@cluster0.r2gbu4q.mongodb.net/"
 app.listen(PORT, async () => {
   await connectDB(); // Connect to MongoDB
