@@ -11,4 +11,14 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  server:{
+    host:"0.0.0.0",
+    port:5173,
+    strictPort:true,
+    hmr:{
+      protocol:"ws",
+      host:"192.168.29.29",
+      port:5173,
+    },
+  },
 });

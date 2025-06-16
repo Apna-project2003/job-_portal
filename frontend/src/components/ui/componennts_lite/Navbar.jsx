@@ -68,8 +68,9 @@ import { Popover, PopoverContent, PopoverTrigger } from '@radix-ui/react-popover
 import { Avatar, AvatarFallback, AvatarImage } from '@radix-ui/react-avatar';
 import { LogOut, User2 } from 'lucide-react';
 import { Button } from '../button';
+import { Link } from 'react-router';
 const Navbar = () => {
-    const user = true;
+    const user = false;
   return (
     <div className="bg-white">
       <div className="flex items-center justify-between mx-auto max-w-7xl h-16 px-4">
@@ -86,17 +87,17 @@ const Navbar = () => {
           </ul>
           { !user ? (
             <div className="flex items-center gap-2">
-              <Button 
+           <Link to={"/login"}>  <Button 
   variant="outline" 
   className="border-red-500 text-red-500 hover:bg-red-100 hover:border-red-700 hover:text-red-700 font-semibold py-2 px-4 rounded-md transition-colors duration-300"
 >
   Login
-</Button>
-               <Button 
+</Button></Link> 
+ <Link to ={"/Register"}>            <Button 
   className="bg-green-600 hover:bg-green-800 text-white font-semibold py-2 px-4 rounded-md transition-colors duration-300"
 >
   Register
-</Button>
+</Button></Link> 
                 </div>
           ):(
           <Popover>
