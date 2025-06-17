@@ -10,6 +10,8 @@ import jwt from "jsonwebtoken";
 export const register = async (req, res) => {
     try {
         const {fullname, email, phoneNumber, password, role } = req.body;
+
+        // console.log(fullname , email , phoneNumber , password , role) ;
          
         if (!fullname || !email || !phoneNumber || !password || !role) {
             return res.status(404).json({
@@ -20,6 +22,7 @@ export const register = async (req, res) => {
         const file = req.file;
       
         const user = await User.findOne({ email });
+        
         if (user) {
             return res.status(400).json({
                 message: 'User already exist with this email.',
@@ -28,7 +31,7 @@ export const register = async (req, res) => {
         }
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        const newUser = new User({
+        const newUser = await  User.create({
             fullname,
             email,
             phoneNumber,
@@ -52,7 +55,7 @@ export const register = async (req, res) => {
 export const login = async (req, res) => {
     try {
         const { email, password, role } = req.body;
-        
+        console.log(email,password,role);
         if (!email || !password || !role) {
             return res.status(404).json({
                 message: "Something is missing",
@@ -60,6 +63,8 @@ export const login = async (req, res) => {
             });
         }
         let user = await User.findOne({ email });
+        
+       
         if (!user) {
             return res.status(404).json({
                 message: "Incorrect email or password.",
