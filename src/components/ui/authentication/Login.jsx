@@ -8,6 +8,9 @@ import { Link, Navigate, useNavigate } from 'react-router'
 import axios from 'axios'
 import { USER_API_ENDPOINT } from '@/utils/data.js'
 import { toast } from 'sonner'
+import { useDispatch, useSelector } from 'react-redux'
+import { setLoading } from '@/redux/authSlice'
+import { Loader2 } from 'lucide-react'
 const Login = () => {
 
   const[input,setInput]  = useState({
@@ -19,6 +22,8 @@ const Login = () => {
   
   });
 const navigate = useNavigate();
+const dispatch = useDispatch();
+const {loading} = useSelector(store => store.auth);
   const changeEventHandler = (e) =>{
     setInput({...input, [e.target.name]:e.target.value});
   };
@@ -37,6 +42,8 @@ const navigate = useNavigate();
 
 
     try{
+      dispatch(setLoading (true));
+
 const res = await axios.post(`${USER_API_ENDPOINT}/login`, input ,{
   headers: {
     "Content-Type" : "application/json",
@@ -53,6 +60,11 @@ if(res.data.success){
       console.log(error);
       const errorMessage = error.response  ? error.response.data.message:"An unexpected error";
       toast.error(errorMessage); 
+    }
+
+
+    finally{
+      dispatch(setLoading(false));
     }
   
 
@@ -103,7 +115,12 @@ if(res.data.success){
 
    
         </div>
-         <Button className="block w-full py-3 my-3 text-white bg-primary hover:bg-primary/90  rounded-md">Login</Button>
+{
+  loading ?( <Button>{"  "} <Loader2 className ="mr-2 h-4 w-4 animate-spin"/>Loading...{"  "}</Button> ): (<Button className="block w-full py-3 my-3 text-white bg-primary hover:bg-primary/90  rounded-md">Login</Button>
+)}
+
+
+        
 
          <p className="text-gray-500 text-md my-2">
           No accout? <Link to ="/register" className="text-blue-700">Register</Link>
