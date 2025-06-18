@@ -4,9 +4,12 @@ import { Avatar, AvatarImage } from "../../avatar";
 import { Button } from "../../button";
 import { LogOut, User2 } from "lucide-react";
 import { Link } from "react-router";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
-  const [user, setUser] = useState(false);
+  
+  const{user} = useSelector((store) =>store.auth );
+
 
   return (
     <div className="bg-white">

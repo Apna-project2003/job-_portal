@@ -8,6 +8,7 @@ import Home from './components/ui/componennts_lite/shared/Home';
 import PrivacyPolicy from './components/ui/componennts_lite/shared/PrivacyPolicy.jsx';
 import TermsofServices from './components/ui/componennts_lite/shared/TermsofServices.jsx';
 import Jobs from './components/ui/componennts_lite/shared/Jobs';
+import Browse from './components/ui/componennts_lite/shared/Browse';
 
 const appRouter = createBrowserRouter([
   {path:"/",
@@ -37,7 +38,11 @@ const appRouter = createBrowserRouter([
   {
     path:"/Home",
     element:<Home/>
-  }
+  },
+  {
+    path:"/Browse",
+    element:<Browse/>
+  },
 ]);
 const App = () => {
   return (
