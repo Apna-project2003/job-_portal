@@ -10,6 +10,7 @@ import TermsofServices from './components/ui/componennts_lite/shared/TermsofServ
 import Jobs from './components/ui/componennts_lite/shared/Jobs';
 import Browse from './components/ui/componennts_lite/shared/Browse';
 import Profile from './components/ui/componennts_lite/shared/Profile';
+import Description from './components/ui/componennts_lite/shared/Description.jsx';
 
 const appRouter = createBrowserRouter([
   {path:"/",
@@ -39,6 +40,10 @@ const appRouter = createBrowserRouter([
   {
     path:"/Home",
     element:<Home/>
+  },
+  {
+    path:"/description/:id",
+    element:<Description/>
   },
   {
     path:"/Browse",
