@@ -9,6 +9,7 @@ import PrivacyPolicy from './components/ui/componennts_lite/shared/PrivacyPolicy
 import TermsofServices from './components/ui/componennts_lite/shared/TermsofServices.jsx';
 import Jobs from './components/ui/componennts_lite/shared/Jobs';
 import Browse from './components/ui/componennts_lite/shared/Browse';
+import Profile from './components/ui/componennts_lite/shared/Profile';
 
 const appRouter = createBrowserRouter([
   {path:"/",
@@ -46,7 +47,7 @@ const appRouter = createBrowserRouter([
 
   {
     path:"/Profile",
-    element:<Prof
+    element:<Profile/>
   }
 ]);
 const App = () => {
