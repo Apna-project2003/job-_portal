@@ -4,6 +4,7 @@ import { Avatar, AvatarImage } from '../../avatar'
 import { Button } from '../../button'
 import { Badge } from '../../badge' // Adjust path
 import { Contact, Mail, Pen } from 'lucide-react'
+import AppliedJob from './AppliedJob'
 
 const Skills = [
   "React", "HTML5 / CSS3", "React.js", "Next.js",
@@ -70,12 +71,14 @@ const Profile = () => {
 
     </div>
 </div>
-<div className="max-w-4xl mx-auto bg-white rounded-2xl">
+
+      </div>
+      
+      <div className="max-w-4xl mx-auto bg-white rounded-2xl">
         <h1 className="text-lg my-5 font-bold">Applied Jobs</h1>
 
         {/* Add Application Table */}
-        {/* <AppliedJob /> */}
-      </div>
+        <AppliedJob />
       </div>
     </div>
   )
