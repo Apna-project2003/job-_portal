@@ -1,28 +1,20 @@
-// import React from 'react'
-// import Navbar from './Navbar'
 
-// const Home = () => {
-//   return (
-//     <div>
-//       {/* 
-//       <Header/>
-//       <Category/>
-//       <LatestJobs/>
-//       <Footer/> */}
-// <Navbar/>
-//     </div>
-//   )
-// }
-
-// export default Home
 
 import React from 'react'
 import Navbar from './Navbar'
+import Header from './Header'
+import Categories from './Categories'
+import LatestJobs from './LatestJobs'
+import Footer from './Footer'
 
 const Home = () => {
   return (
     <div>
-      <Navbar/>
+   <Navbar/>
+   <Header/>
+      <Categories/>
+      <LatestJobs/>
+      <Footer/>
     </div>
   )
 }
