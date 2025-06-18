@@ -74,9 +74,10 @@ const Navbar = () => {
                   <div className="flex flex-col text-gray-600 mt-4 gap-2">
                     <div className="flex items-center gap-2 cursor-pointer">
                       <User2 className="h-4 w-4" />
-                      <Button variant="link" className="p-0 h-auto">
+                      {/* <Button variant="link" className="p-0 h-auto">
                         Profile
-                      </Button>
+                      </Button> */}
+                      <Button variant="link" ><Link to={"/profile"}>Profile</Link></Button>
                     </div>
                     <div
                       className="flex items-center gap-2 cursor-pointer"
