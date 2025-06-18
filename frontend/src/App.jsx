@@ -5,6 +5,9 @@ import Login from './components/ui/authentication/Login';
 import Register from './components/ui/authentication/Register';
 import { RouterProvider } from 'react-router-dom';
 import Home from './components/ui/componennts_lite/shared/Home';
+import PrivacyPolicy from './components/ui/componennts_lite/shared/PrivacyPolicy.jsx';
+import TermsofServices from './components/ui/componennts_lite/shared/TermsofServices.jsx';
+import Jobs from './components/ui/componennts_lite/shared/Jobs';
 
 const appRouter = createBrowserRouter([
   {path:"/",
@@ -17,6 +20,24 @@ const appRouter = createBrowserRouter([
   {path:"/register",
     element:<Register />,
   },
+  {
+    path:"/PrivacyPolicy",
+    element:<PrivacyPolicy/>,
+  },
+  
+{
+  path:"/TermsofServices",
+  element:<TermsofServices/>
+  },
+
+  {
+    path:"/Jobs",
+  element:<Jobs/>
+  },
+  {
+    path:"/Home",
+    element:<Home/>
+  }
 ]);
 const App = () => {
   return (
