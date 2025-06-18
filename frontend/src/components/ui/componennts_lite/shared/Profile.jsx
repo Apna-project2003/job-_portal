@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navbar from './Navbar'
 import { Avatar, AvatarImage } from '../../avatar'
 import { Button } from '../../button'
 import { Badge } from '../../badge' // Adjust path
 import { Contact, Mail, Pen } from 'lucide-react'
 import AppliedJob from './AppliedJob'
+import EditProfileModal from './EditProfileModal'
 
 const Skills = [
   "React", "HTML5 / CSS3", "React.js", "Next.js",
@@ -12,6 +13,7 @@ const Skills = [
 ]
 
 const Profile = () => {
+  const [open , setOpen] = useState(false);
     const isResume = true;
   return (
     <div>
@@ -27,7 +29,7 @@ const Profile = () => {
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus nostrum facere maxime hic incidunt.</p>
             </div>
           </div>
-          <Button className="text-right" variant="outline">
+          <Button onClick={() => setOpen(true)} className="text-right" variant="outline">
             <Pen />
           </Button>
         </div>
@@ -80,6 +82,7 @@ const Profile = () => {
         {/* Add Application Table */}
         <AppliedJob />
       </div>
+       <EditProfileModal open={open} setOpen={setOpen} />
     </div>
   )
 }
