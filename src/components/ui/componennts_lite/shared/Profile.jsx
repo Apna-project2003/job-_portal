@@ -5,6 +5,7 @@ import { Button } from '../../button'
 import { Badge } from '../../badge' // Adjust path
 import { Contact, Mail, Pen } from 'lucide-react'
 import AppliedJob from './AppliedJob'
+import EditProfileModal from './EditProfileModal'
 
 const Skills = [
   "React", "HTML5 / CSS3", "React.js", "Next.js",
