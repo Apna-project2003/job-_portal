@@ -1,20 +1,28 @@
-import React, { useState } from 'react'
-import Navbar from './Navbar'
-import { Avatar, AvatarImage } from '../../avatar'
-import { Button } from '../../button'
-import { Badge } from '../../badge' // Adjust path
-import { Contact, Mail, Pen } from 'lucide-react'
-import AppliedJob from './AppliedJob'
-import EditProfileModal from './EditProfileModal'
+import React, { useState } from "react";
+import Navbar from "./Navbar";
+import { Avatar, AvatarImage } from "../../avatar";
+import { Button } from "../../button";
+import { Badge } from "../../badge"; // Adjust path
+import { Contact, Mail, Pen } from "lucide-react";
+import AppliedJob from "./AppliedJob";
+import EditProfileModal from "./EditProfileModal";
+import { useSelector } from "react-redux";
 
 const Skills = [
-  "React", "HTML5 / CSS3", "React.js", "Next.js",
-  "Angular", "Vue.js", "SASS / SCSS", "Tailwind CSS"
-]
+  "React",
+  "HTML5 / CSS3",
+  "React.js",
+  "Next.js",
+  "Angular",
+  "Vue.js",
+  "SASS / SCSS",
+  "Tailwind CSS",
+];
 
 const Profile = () => {
-  const [open , setOpen] = useState(false);
-    const isResume = true;
+  const [open, setOpen] = useState(false);
+  const { user } = useSelector((store) => store.auth);
+  const isResume = true;
   return (
     <div>
       <Navbar />
@@ -25,11 +33,16 @@ const Profile = () => {
               <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
             </Avatar>
             <div>
-              <h1 className="font-medium text-xl">Aryan Gupta</h1>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus nostrum facere maxime hic incidunt.</p>
+              <h1 className="font-medium text-xl">{user?.fullname}</h1>
+              <p>{user?.profile?.bio}</p>
             </div>
           </div>
-          <Button onClick={() => setOpen(true)} className="text-right" variant="outline">
+
+          <Button
+            onClick={() => setOpen(true)}
+            className="text-right"
+            variant="outline"
+          >
             <Pen />
           </Button>
         </div>
@@ -37,54 +50,62 @@ const Profile = () => {
         <div className="my-5">
           <div className="flex items-center gap-3 my-2">
             <Mail />
-            <span>Aryan61865@gmail.com</span>
+            <span className="">
+              <a href={`mailto:${user?.email}`}>{user?.email}</a>
+            </span>
           </div>
           <div className="flex items-center gap-3 my-2">
             <Contact />
-            <span>8109903395</span>
+            <span className="">
+              <a href={`tel:${user?.phoneNumber}`}>{user?.phoneNumber}</a>
+            </span>
           </div>
         </div>
-<div>
-    <div className="my-5">
-            
-          <h2 className="text-lg font-semibold my-3">Skills</h2>
-          <div className="flex flex-wrap gap-2">
-            {Skills.length !== 0 ?(Skills.map((item, index) => 
-              <Badge key={index}>{item}</Badge>)):(
+        <div>
+          <div className="my-5">
+            <h2 className="text-lg font-semibold my-3">Skills</h2>
+            <div className="flex items-center gap-1">
+              {user?.profile?.skills.length !== 0 ? (
+                user?.profile?.skills.map((item, index) => (
+                  <Badge key={index}>{item}</Badge>
+                ))
+              ) : (
                 <span>NA</span>
-            )}
+              )}
+            </div>
           </div>
         </div>
-</div>
-        
-<div>
-    <div className="grid w-full max-w-sm items-center gap-1.5">
-        <label className="text-md font-bold">
-             Resume
-        </label>
 
         <div>
-            {
-                isResume ? (<a target="_blank" href={"http://resume.com"} className="text-blue-600 hover:underline cursor-pointer">Download </a>)
-                :(<span>No Resume Found</span>
+          <div className="grid w-full max-w-sm items-center gap-1.5">
+            <label className="text-md font-bold">Resume</label>
 
-           ) }
+            <div>
+              {isResume ? (
+                <a
+                  target="_blank"
+                  href={"https://www.youtube.com/watch?v=3LXrE1Cs5bk&t=25650s"}
+                  className="text-blue-600 hover:underline cursor-pointer"
+                >
+                 Download
+                </a>
+              ) : (
+                <span>No Resume Found</span>
+              )}
+            </div>
+          </div>
         </div>
-
-    </div>
-</div>
-
       </div>
-      
+
       <div className="max-w-4xl mx-auto bg-white rounded-2xl">
         <h1 className="text-lg my-5 font-bold">Applied Jobs</h1>
 
         {/* Add Application Table */}
         <AppliedJob />
       </div>
-       <EditProfileModal open={open} setOpen={setOpen} />
+      <EditProfileModal open={open} setOpen={setOpen} />
     </div>
-  )
-}
+  );
+};
 
-export default Profile
+export default Profile;
