@@ -15,6 +15,6 @@ router.route("/login").post(login);
 
 router
   .route("/profile/update")
-  .post(authenticateToken,  updateProfile);
+  .post(authenticateToken,singleUpload,  updateProfile);
 
 export default router;
