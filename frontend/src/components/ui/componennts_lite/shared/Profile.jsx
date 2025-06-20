@@ -84,7 +84,7 @@ const Profile = () => {
               {isResume ? (
                 <a
                   target="_blank"
-                  href={"https://www.youtube.com/watch?v=3LXrE1Cs5bk&t=25650s"}
+                  href={user?.profile?.resume}
                   className="text-blue-600 hover:underline cursor-pointer"
                 >
                  Download

@@ -48,6 +48,8 @@ export const postJob = async (req,res) =>{
 
 
 export const getAllJobs = async(req,res) =>{
+
+    console.log("API HIT" );
     try{
 const keyword = req.query.keyword || "";
 const query = {
@@ -63,9 +65,13 @@ $or:[
 };
 
 const jobs = await Job.find(query).populate({
-    path:"company",
-
+ path:"company",
 }).sort({createAt:-1});
+
+
+console.log("📦 Jobs found:", jobs);
+
+
 if(!jobs){
     return res.status(404).json({message:"No jobs found" , status : false});
 
@@ -73,6 +79,7 @@ if(!jobs){
 return res.status(200).json({jobs,status:true});
     }
     catch(error){
+    console.error("❌ Error in getAllJobs:", error);
 return res.status(500).json({message : "Server Error" , status:false});
 
     }

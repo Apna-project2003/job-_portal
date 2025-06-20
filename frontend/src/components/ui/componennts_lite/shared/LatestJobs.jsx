@@ -4,9 +4,10 @@ import { useSelector } from 'react-redux';
 
 const randomJobs = [1,2,3,4,5,6,7,8,9];
 const LatestJobs = () => {
-  // const {alljobs} = useSelector((store)=> store.job);
- const allJobs = useSelector((state) => state.jobs?.allJobs || []); // Safely access allJobs
+  
+ const allJobs = useSelector((state) => state.job?.allJobs || []); // Safely access allJobs
 
+console.log("Redux all Jobs" , allJobs);
 
   return (
     <div className="max-w-7xl mx-auto my-20">
