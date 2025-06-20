@@ -5,10 +5,13 @@ import getDataUri from "../utils/datauri.js";
 import cloudinary from "../utils/cloud.js";
 
 export const register = async (req, res) => {
+
+  console.log("API HIT", register);
+
   try {
     const { fullname, email, phoneNumber, password, role } = req.body;
 
-    console.log(fullname, email, phoneNumber, password, role);
+    console.log("data received",{fullname, email, phoneNumber, password, role});
 
     if (!fullname || !email || !phoneNumber || !password || !role) {
       return res.status(404).json({
@@ -17,16 +20,21 @@ export const register = async (req, res) => {
       });
     }
     const file = req.file;
+console.log("reiceved file",file );
 
     const user = await User.findOne({ email });
+console.log("user recived",user);
 
     if (user) {
+    
       return res.status(400).json({
         message: "User already exist with this email.",
         success: false,
       });
     }
     const hashedPassword = await bcrypt.hash(password, 10);
+
+    
 
     const newUser = await User.create({
       fullname,
@@ -40,14 +48,21 @@ export const register = async (req, res) => {
       message: `Account created successfully ${fullname}.`,
       success: true,
     });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({
-      message: "server Error",
-      success: false,
-    });
-  }
+  
+
+ } catch (error) {
+  console.error("Register API Error:", error);
+  res.status(500).json({
+    message: "server Error",
+    success: false,
+  });
+}
+
 };
+
+
+
+
 export const login = async (req, res) => {
   try {
     const { email, password, role } = req.body;
@@ -118,20 +133,52 @@ export const login = async (req, res) => {
     });
   }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const logout = (req, res) => {
   try {
-    return res.status(200).cookie("token", "", { maxAge: 0 }).json({
-      message: "Logged out successfully.",
-      success: true,
-    });
+    res.status(200)
+      .clearCookie("token", {
+        httpOnly: true,
+        sameSite: "None",
+        secure: true,
+      })
+      .json({
+        message: "Logged out successfully.",
+        success: true,
+      });
   } catch (error) {
-    console.error(error);
+    console.error("Logout error:", error);
     res.status(500).json({
-      message: "server error logout",
+      message: "Logout failed.",
       success: false,
     });
   }
-  };
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 export const updateProfile = async (req, res) => {

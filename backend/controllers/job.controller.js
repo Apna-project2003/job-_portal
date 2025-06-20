@@ -3,12 +3,20 @@ import { Job } from "../models/job.model.js";
 
 
 export const postJob = async (req,res) =>{
+
+   
+
     try{
-        const { title , description,requirements,salary,location,jobtype,position,companyId,experience} = req.body;
+        const { title , description,requirements,salary,location,jobType,position,companyId,experience} = req.body;
+ 
 
         const userId = req.id;
+       
 
- if(!title || !description || !requirements || !salary || !location || !jobtype || !position || !companyId || !experience){
+
+ if(!title || !description || !requirements || !salary || !location || !jobType || !position || !companyId || !experience){
+
+   
     return res.status(400).json({ message:"please fill all the fields", 
         success:false,
 
@@ -16,19 +24,24 @@ export const postJob = async (req,res) =>{
 
  }
 
+ 
  const job = await Job. create({
     title ,
      description,
      requirements : requirements.split(","),
      salary : Number(salary),
-     location,jobtype,position,company:companyId,experienceLevel:experience,
+     location,jobType,position,company:companyId,experience,
      created_by:userId,
 
  });
+
+ 
+
+
  return res.status(201).json({message:"Job posted successfully",status:true,job});
     }
     catch(error){
-       console.error(error);
+       console.error("Register error:",error);
        return res.status(500).json({message:"server Error",status:false});
     }
 };

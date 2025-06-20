@@ -87,7 +87,7 @@ const Profile = () => {
                   href={"https://www.youtube.com/watch?v=3LXrE1Cs5bk&t=25650s"}
                   className="text-blue-600 hover:underline cursor-pointer"
                 >
-                  {user?.profile?.resumeOriginalname}
+                 Download
                 </a>
               ) : (
                 <span>No Resume Found</span>
