@@ -26,6 +26,7 @@ const EditProfileModal = ({ open, setOpen }) => {
     bio: user?.profile?.bio,
     skills: user?.profile?.skills?.map((skill) => skill),
     file: user?.profile?.resume,
+    profilePhoto:null,
   });
 
   const dispatch = useDispatch();
@@ -49,6 +50,15 @@ const EditProfileModal = ({ open, setOpen }) => {
       formData.append("file", input.file);
     }
 
+
+
+
+    //   Navbar profile photo
+
+
+// if (input.profilePhoto) {
+//   formData.append("profilePhoto", input.profilePhoto);
+// }
 
      try {
       setLoading(true);
@@ -102,6 +112,35 @@ if (res.data.success) {
 
         <form  onSubmit={handleFileChange}>
           <div className="grid gap-4 py-4">
+
+
+
+
+
+{/* navar profile photo */}
+
+{/* <div className="grid grid-cols-4 items-center gap-4">
+  <Label htmlFor="profilePhoto" className="text-right">Profile Photo</Label>
+  <input
+    type="file"
+    id="profilePhoto"
+    name="profilePhoto"
+    accept="image/*"
+    onChange={(e) => setInput({ ...input, profilePhoto: e.target.files[0] })}
+    className="col-span-3 border border-gray-300 rounded-md p-2"
+  />
+</div>
+ */}
+
+
+
+
+
+
+
+
+
+
             <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="name" className="text-right">Name</Label>
               <input
