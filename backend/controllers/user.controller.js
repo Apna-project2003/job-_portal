@@ -20,6 +20,9 @@ export const register = async (req, res) => {
       });
     }
     const file = req.file;
+    const fileUri =getDataUri(file);
+    const cloudResponse = await cloudinary . uploader.upload(fileUri.content);
+
 console.log("reiceved file",file );
 
     const user = await User.findOne({ email });
@@ -36,17 +39,47 @@ console.log("user recived",user);
 
     
 
-    const newUser = await User.create({
-      fullname,
-      email,
-      phoneNumber,
-      password: hashedPassword,
-      role,
-    });
+//     const newUser = await User.create({
+//       fullname,
+//       email,
+//       phoneNumber,
+//       password: hashedPassword,
+//       role,
+//       profile:{
+//        profilePhoto:cloudResponse.secure_url,
+//       },
+//     });
+//  await User.create.save();
+
+
+const newUser = await User.create({
+  fullname,
+  email,
+  phoneNumber,
+  password: hashedPassword,
+  role,
+  profile: {
+    profilePhoto: cloudResponse.secure_url,
+    skills:skills,
+    bio:bio,
+  },
+});
+
+await newUser.save();
+
+console.log("newuser saved", newUser);
+
+
+
+
+
+
+
 
     return res.status(200).json({
       message: `Account created successfully ${fullname}.`,
       success: true,
+      user:newUser,
     });
   
 

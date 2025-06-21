@@ -111,6 +111,7 @@ const jobSchema = new mongoose.Schema(
     created_by: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
+      required:true,
       
     },
     applications: [

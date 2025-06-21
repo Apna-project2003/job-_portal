@@ -56,9 +56,9 @@ const EditProfileModal = ({ open, setOpen }) => {
     //   Navbar profile photo
 
 
-// if (input.profilePhoto) {
-//   formData.append("profilePhoto", input.profilePhoto);
-// }
+if (input.profilePhoto) {
+  formData.append("profilePhoto", input.profilePhoto);
+}
 
      try {
       setLoading(true);

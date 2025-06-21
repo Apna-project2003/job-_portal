@@ -65,7 +65,9 @@ $or:[
 };
 
 const jobs = await Job.find(query).populate({
- path:"company",
+ 
+     path:"company",
+ 
 }).sort({createAt:-1});
 
 
