@@ -51,16 +51,35 @@ const logoutHandler = async () => {
         {/* Right: Nav Items + Avatar/Login */}
         <div className="flex items-center gap-12">
           <ul className="flex font-medium items-center gap-5">
-            <li>
+             {user && user.role === "Recruiter" ? (
+              <>
+                <li>
+                  <Link to={"/admin/companies"}>Companies</Link>
+                </li>
+                <li>
+                  <Link to={"/admin/jobs"}>Jobs</Link>
+                </li>
+              </>
+            ):(
+<>
+
+
+   <li>
               <Link to={"/Home"}>Home</Link>
             </li>
             <li>
-              {" "}
+              
               <Link to={"/Jobs"}>Jobs</Link>
             </li>
             <li>
               <Link to={"/Browse"}>Browse</Link>
             </li>
+
+
+</>
+            )
+            }
+         
           </ul>
 
           {!user ? (
@@ -115,17 +134,21 @@ const logoutHandler = async () => {
                     </div>
                   </div>
 
-                  {/* Bottom Actions */}
+              
+
+
+
                   <div className="flex flex-col text-gray-600 mt-4 gap-2">
+
+                     {user && user.role === "Student" && (
                     <div className="flex items-center gap-2 cursor-pointer">
                       <User2 className="h-4 w-4" />
-                      {/* <Button variant="link" className="p-0 h-auto">
-                        Profile
-                      </Button> */}
+                     
                       <Button variant="link">
                         <Link to={"/profile"}>Profile</Link>
                       </Button>
                     </div>
+                     )}
                     <div
                       className="flex items-center gap-2 cursor-pointer"
                       

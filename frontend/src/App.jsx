@@ -11,6 +11,8 @@ import Jobs from './components/ui/componennts_lite/shared/Jobs';
 import Browse from './components/ui/componennts_lite/shared/Browse';
 import Profile from './components/ui/componennts_lite/shared/Profile';
 import Description from './components/ui/componennts_lite/shared/Description.jsx';
+import Companies from './components/ui/admincomponent/Companies';
+import CompanyCreate from './components/ui/admincomponent/CompanyCreate';
 
 const appRouter = createBrowserRouter([
   {path:"/",
@@ -53,7 +55,57 @@ const appRouter = createBrowserRouter([
   {
     path:"/Profile",
     element:<Profile/>
-  }
+  },
+   {
+    path: "/admin/companies",
+    element: (
+     
+        <Companies />
+     
+    ),
+  },
+  {
+    path: "/admin/companies/create",
+    element: (
+  
+        <CompanyCreate />
+   
+    ),
+  },
+  {
+    path: "/admin/companies/:id",
+    element: (
+      
+        <CompanySetup />
+    
+    ),
+  },
+  // {
+  //   path: "/admin/jobs",
+  //   element: (
+     
+        
+  //       <AdminJobs />
+     
+  //   ),
+  // },
+  // {
+  //   path: "/admin/jobs/create",
+  //   element: (
+  //     <ProtectedRoute>
+        
+  //       <PostJob />{" "}
+  //     </ProtectedRoute>
+  //   ),
+  // },
+  // {
+  //   path: "/admin/jobs/:id/applicants",
+  //   element: (
+  //     <ProtectedRoute>
+  //       <Applicants />
+  //     </ProtectedRoute>
+  //   ),
+  // },
 ]);
 const App = () => {
   return (
