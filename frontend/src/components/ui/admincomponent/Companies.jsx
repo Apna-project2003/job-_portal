@@ -11,7 +11,9 @@ import { Input } from "../input";
 import { Button } from "../button";
 import { useDispatch } from "react-redux";
 import Navbar from "../componennts_lite/shared/Navbar";
-import CompaniesTable from "./CompaniesTabl";
+import CompaniesTable from "./CompaniesTable";
+import { setSearchCompanyByText } from "@/redux/companySlice";
+
 
 const Companies = () => {
   const navigate = useNavigate();

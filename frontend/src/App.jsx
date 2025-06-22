@@ -13,6 +13,7 @@ import Profile from './components/ui/componennts_lite/shared/Profile';
 import Description from './components/ui/componennts_lite/shared/Description.jsx';
 import Companies from './components/ui/admincomponent/Companies';
 import CompanyCreate from './components/ui/admincomponent/CompanyCreate';
+import CompanySetup from './components/ui/admincomponent/CompanySetup';
 
 const appRouter = createBrowserRouter([
   {path:"/",

@@ -28,7 +28,12 @@ useGetSingleJob(JobId);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-const isIntiallyApplied = singleJob?.application?.some(application => application.applicant ===user?.id) || false;
+// const isIntiallyApplied = singleJob?.application?.some(application => application.applicant ===user?.id) || false;
+
+
+const isIntiallyApplied = singleJob?.application?.some(
+  application => application.applicant?.toString() === user?.id?.toString()
+) || false;
 
 
 const [isApplied, setIsApplied] = useState(isIntiallyApplied);

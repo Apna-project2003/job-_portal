@@ -3,6 +3,11 @@
 import path from "path";
 
 const getDataUri = (file) =>{
+
+    if (!file) {
+    console.log("❌ No file received in getDataUri");
+    return null;
+  }
     const parser = new DataUriParser();
     const extName = path.extname(file.originalname).toString();
 
